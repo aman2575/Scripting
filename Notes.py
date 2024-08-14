@@ -54,12 +54,34 @@
 # help(add)
 
 ### Type Checking in Python using mypy, to check type errors
-from typing import List
-def list_sum(l: List[int]) -> int:
-    return sum(l)
-mylist = [1,2,3,4,"a"]
-print(list_sum(mylist))
-help(list_sum)
+# from typing import List
+# def list_sum(l: List[int]) -> int:
+#     return sum(l)
+# mylist = [1,2,3,4,"a"]
+# print(list_sum(mylist))
+# help(list_sum)
+
+### DataClasses in Python
+# Earlier we used to write like this
+# class Person:
+#     def __init__(self, name, age, city):
+#         self.name = name
+#         self.age = age
+#         self.city = city
+#     def __repr__(self):
+#         return "Person(name={}, age={}, city={})".format(self.name, self.age, self.city)
+#     def __eq__(self, other):
+#         return (self.name, self.age, self.city) == (other.name, other.age, other.city)
+# Using Dataclasses
+# from dataclasses import dataclass
+# @dataclass
+# class NewPerson:
+#     name: str
+#     age: int
+#     city: str
+# p1 = NewPerson('Aman',25,"Delhi")
+# p2 = NewPerson('Aman',25,"Delhi")
+# print(p1==p2)
 
 
 ### Common Packages and Modules
@@ -97,3 +119,20 @@ Asyncio
     - For Parallel task that share data with minimal CPU Use
 
 """
+
+##https://www.youtube.com/watch?v=-O2YuS0n03U&list=PLo9Vi5B84_dfAuwJqNYG4XhZMrGTF3sBx
+
+### Python Dotenv
+import os
+from dotenv import load_dotenv
+
+load_dotenv(override=True)  ## override=True, if want to override system wide env variable
+
+API_KEY = os.getenv("API_KEY")
+USERNAME = os.getenv("USERNAME")
+ADDRESS = os.getenv("ADDRESS")
+US = os.getenv("MAIL")
+# print(API_KEY)
+# print(USERNAME)
+# print(ADDRESS)
+print(US)
