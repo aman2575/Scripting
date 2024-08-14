@@ -120,7 +120,7 @@ Asyncio
 
 """
 
-##https://www.youtube.com/watch?v=-O2YuS0n03U&list=PLo9Vi5B84_dfAuwJqNYG4XhZMrGTF3sBx
+
 
 ### Python Dotenv
 # import os
@@ -140,7 +140,7 @@ Asyncio
 ### Numpy
 
 # Numpy is a general-purpose array
-import numpy as np
+# import numpy as np
 # print(np.arange(1,10,0.5))
 #print(np.linspace(1,100,20))
 
@@ -162,10 +162,10 @@ import numpy as np
 
 # Array Indexing
 # Positive tuple indexing
-arr = np.array([[-1,2,0,4],
-                [4,-0.5,6,0],
-                [2.6,0,7,8],
-                [3,-7,4,2.0]])
+# arr = np.array([[-1,2,0,4],
+#                 [4,-0.5,6,0],
+#                 [2.6,0,7,8],
+#                 [3,-7,4,2.0]])
 #print(arr[2,1])
 
 # Slicing: Just like list in python, Numpy arrays can be sliced. as arrays can be multidimensional, you need to specify a slice for each dimension of the array
@@ -274,6 +274,92 @@ arr = np.array([[-1,2,0,4],
 # When we have more the 2D array we use array_split
 # print(np.array_split(a,2,axis=1))
 
-## Broadcasting
+## Array Broadcasting
 # The term broadcasting describes how numpy treats array with different shapes during arithmetic operation.
 
+## Working with Datetime
+
+## Linear Algebra
+
+## Saving & Loading Arrays
+
+###Pandas
+
+
+### Polars
+
+### Generator Expression
+# https://www.pythontutorial.net/advanced-python/python-generator-expressions/
+
+### Context Manager
+# https://www.pythontutorial.net/advanced-python/python-context-managers/
+
+### PAradigms
+## Procedural Programming
+# docuses on writing procedures or functions that operate on data. This paradigm emphasizes a sequence of steps to be followed
+# def greet(name):
+#     print("Hello, " + name + "!")
+
+# name = "Tutorialspoint"
+# greet(name)
+##Object-Oriented Programming (OOP)
+# OOP organizes code into objectsm which are instances of classes, This paradigm promotes encapsulation, inheritance, and polymorphism
+# class Animal:
+#     def __init__(self, name):
+#         self.name = name
+
+#     def speak(self):
+#         raise NotImplementedError("Subclass must implement this method.")
+
+# class Dog(Animal):
+#     def speak(self):
+#         return "Woof!"
+
+# dog = Dog("Buddy")
+# print(dog.name)
+# print(dog.speak())
+
+## Imperative Programming
+# It involves writing code that specifies detailed steps to achieve a goal. 
+# focuses on how to perform tasks through statements that change the program state.
+# numbers = [1, 2, 3, 4, 5]
+# total = 0
+# for num in numbers:
+#     total += num
+# print("Sum:", total)
+
+## Function Programming
+# treats computation as the evaluation of mathematical functions. It emphasize immutability and the ise of pure functions.
+# numbers = [1, 2, 3, 4, 5]
+# squares = list(map(lambda x: x ** 2, numbers))
+# print("The square of the numbers in the list:", squares)
+
+# even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+# print("The even numbers from the given list:", even_numbers)
+
+## Event-Driven Programming
+# is centered around events and their handlers, often used in GUI applications and asynchronous programming
+# from tkinter import Tk, Button
+
+# def button_click():
+#     print("Button clicked!")
+
+# root = Tk()
+# button = Button(root, text="Click me", command=button_click)
+# button.pack()
+# root.mainloop()
+from typing import Union
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: Union[str, None] = None):
+    return {"item_id": item_id, "q": q}
