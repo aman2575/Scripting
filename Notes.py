@@ -294,7 +294,7 @@ Asyncio
 ### Context Manager
 # https://www.pythontutorial.net/advanced-python/python-context-managers/
 
-### PAradigms
+### Paradigms
 ## Procedural Programming
 # docuses on writing procedures or functions that operate on data. This paradigm emphasizes a sequence of steps to be followed
 # def greet(name):
@@ -348,18 +348,3 @@ Asyncio
 # button = Button(root, text="Click me", command=button_click)
 # button.pack()
 # root.mainloop()
-from typing import Union
-
-from fastapi import FastAPI
-
-app = FastAPI()
-
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
